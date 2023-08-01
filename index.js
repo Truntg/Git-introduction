@@ -1,1 +1,1 @@
-hello
+console.log("hello Chun Xi")
