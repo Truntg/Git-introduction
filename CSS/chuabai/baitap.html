@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        padding: 18px;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: repeat(4 1fr);
+        grid-template-rows: 300px 150px 300px;
+        gap: 15px;
+        grid-template-areas: 
+        "main1 main1 main2 main3"
+        "main5 main6 main2 main3"
+        "main5 main6 main4 main4 ";
+
+        grid-row: 1/span2;
+        grid-column: 3/span2 ;
+    }
+    .item img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    /*item:nth-child(){
+        grid-area: main1;
+    } */
+</style>
+<body>
+    <div class="container">
+        <!-- <div class="contai"> -->
+            <div class="item" style="grid-area: main1;">
+                <img src="https://bizweb.dktcdn.net/100/438/408/files/hinh-nen-thien-nhien-4k-yody-vn-1-jpeg.jpg?v=1683173516798" alt="" >
+            </div>
+
+            <div class="item" style="grid-area: main2;">
+                <img src="https://vn-live-01.slatic.net/p/2e24fb05cb63de74db5346a79781fbcc.jpg" alt=""  >
+            </div>
+
+            <div class="item" style="grid-area: main3;">
+                <img src="https://hapotravel.com/wp-content/uploads/2023/03/tong-hop-25-hinh-nen-thien-nhien-4k-dep-nhat-cho-desktop-va-mobile_17.jpg" alt="" >
+            </div>
+        <!-- </div> -->
+
+        <!-- <div class="contai1"> -->
+            <div class="item" style="grid-area: main4;">
+                <img src="https://bizweb.dktcdn.net/100/438/408/files/hinh-nen-thien-nhien-4k-yody-vn-1-jpeg.jpg?v=1683173516798" alt="" >
+            </div>
+
+            <div class="item" style="grid-area: main5;">
+                <img src="https://vn-live-01.slatic.net/p/2e24fb05cb63de74db5346a79781fbcc.jpg" alt="" >
+            </div>
+
+            <div class="item" style="grid-area: main6;">
+                <img src="https://hapotravel.com/wp-content/uploads/2023/03/tong-hop-25-hinh-nen-thien-nhien-4k-dep-nhat-cho-desktop-va-mobile_17.jpg" alt="" >
+            </div>
+        <!-- </div> -->
+    </div>
+</body>
+</html>

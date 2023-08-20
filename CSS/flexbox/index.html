@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        /* display: flex; */
+        /* flex-direction: row row | row-reverse | column | column-reverse;;
+        flex-wrap: wrap;/nowrap | wrap | wrap-reverse */
+        /* flex-flow: row wrap;
+        justify-content: space-between;/*flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe; */
+        /* flex-basis căn chỉnh kích thước phần tử muốn căn chỉnh
+        flex-grow 
+        */
+        /* align-items: flex-end;
+        row-gap: 20px; */
+
+        display: grid;
+        /* grid-template-columns: 1fr 2fr 1fr 1fr; */
+        grid-template-columns: 50px 50px 50px 50px;
+        grid-template-rows: auto;
+        grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+    }
+
+    .item{
+        height: 50px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="item" style="grid-area: header;">1</div>
+        <div class="item" style="grid-area: main;">2</div>
+        <div class="item" style="grid-area: sidebar;">3</div>
+        <div class="item"style="grid-area: footer;">4</div>
+
+        <!-- <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div> -->
+        <!-- <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+        <div class="item">16</div> -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    #head,#head-link,#main,#footer {
+        border: 1px solid black;
+        margin-bottom: 4px;
+    }
+    #left, #center, #right{
+        border: 1px solid black;
+    }
+    #main{
+        height: 300px;
+    }
+    #left{
+        width: 100px;
+        float: left;
+        height: 100%;
+        
+    }
+    #center{
+        float: left;
+        width: calc(100% - 200px);
+        height: 100%;
+    }
+    #right{
+        width: 100px;
+        float: right;
+        height: 100%;
+        
+    }
+</style>
+<body>
+    <div id="head">Header</div>
+    <div id="head-link">Head Link</div>
+    <div id="main">
+        <div id="left">Left</div>
+        <div id="center">Center</div>
+        <div id="right">Right</div>
+    </div>
+    <div id="footer">Footer</div>
+</body>
+</html>

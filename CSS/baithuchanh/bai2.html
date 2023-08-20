@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    .head{
+        text-align: center;
+        background-color: aqua;
+        color: white;
+        padding: 50px;
+    }
+    .nav {
+        background-color: black;
+        overflow: hidden;
+    }
+    .nav a{
+        display: block;
+        color: white;
+        float: left;
+        padding: 12px 18px;
+    }
+    .nav a:hover {
+
+        background-color: #ddd;
+        color: black;
+    }
+    .main {
+        display: flex;
+    }
+    .side-main {
+        flex: 30%;
+        background-color: #f1f1f1;
+        padding: 20px;
+    }
+    .content-main{
+        flex: 70%;
+        background-color: white;
+        padding: 20px;
+    }
+    .fake{
+        background-color: #aaa;
+        width: 100%;
+        margin-bottom: 2px;
+        padding: 20px;
+    }
+    .foot{
+        background-color: #f1f1f1;
+        padding: 1px;
+    }
+    .foot h2{
+        color: rgb(80, 75, 75);
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="head">
+        <h1>My Website</h1>
+        <p>Xin Chào Tất Cả Mọi Người</p>
+    </div>
+
+    <div class="nav">
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+    </div>
+
+    <div class="main">
+        <div class="side-main">
+            <h2>About Me</h2>
+            <h4>Photo of me:</h4>
+            <div class="fake" style="height: 200px;">Image</div>
+            <p>Xin Chào Tất Cả Mọi Người</p>
+            <div class="fake" style="height: 200px;">Image</div>
+            <div class="fake" style="height: 200px;">Image</div>
+            <div class="fake" style="height: 200px;">Image</div>
+        </div>
+        <div class="content-main">
+            <h2>Title heading</h2>
+            <h4>Title descripton tháng 8 Năm 2023</h4>
+            <div class="fake" style="height: 200px;">Image</div>
+            <p>Some text ...</p>
+            <p>Xin Chào Tất Cả Mọi Người Đang Có Mặt Ở Đây</p>
+            <h4>Title descripton tháng 8 Năm 2023</h4>
+            <div class="fake" style="height: 200px;">Image</div>
+            <p>Some text...</p>
+            <p>Hôm Nay Mọi Người Cảm Thấy Như Thế Nào.....</p>
+        </div>
+    </div>
+    <div class="foot">
+        <h2>Xin Chào Tạm Biệt</h2>
+    </div>
+</body>
+</html>
