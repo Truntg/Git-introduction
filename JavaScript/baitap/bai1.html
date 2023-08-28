@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var students = [['David', 80], ['Vinoth', 77], ['Divya', 88], ['Ishitha', 95], ['Thomas', 68]];
+        
+        var Avgmarks = 0;
+        
+        for (var i=0; i < students.length; i++) {
+                Avgmarks += students[i][1];
+                var avg = (Avgmarks/students.length);
+        }
+        
+        console.log("Average grade: " + (Avgmarks)/students.length);
+        
+                if (avg < 60){
+                  document.write("Grade : F");      
+                  } 
+                else if (avg < 70) {
+                        document.write("Grade : D"); 
+                          } 
+                else if (avg < 80) 
+                     {
+                        document.write("Grade : C"); 
+                } else if (avg < 90) {
+                        document.write("Grade : B"); 
+                } else if (avg < 100) {
+                        document.write("Grade : A"); 
+        }
+    </script>
+</body>
+</html>
