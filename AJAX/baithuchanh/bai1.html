@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h3>TODO LIST</h3>
+    <ul id="container">
+    </ul>
+</body>
+<script>
+    let todos = [];
+    let page = 1;
+    let limit = 100;
+
+    axios
+    .get("https://jsonplaceholder.typicode.com/todos", {params : {_page:page, _limit: limit,},})
+    .then(function(response){
+        console.log(response.data);
+        todos = response.data;
+        render();
+    });
+
+    function render(){
+        const container = document.querySelector('#container')
+        const todoElement = todos.map((item) => `<li>${item.title}</li>`);
+
+        container.innerHTML = todoElement.join("");
+    }
+    
+</script>
+</html>

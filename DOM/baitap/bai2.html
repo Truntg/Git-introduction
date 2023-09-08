@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính số tiền vay</title>
+</head>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+}
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+}
+.row{
+    width: 90%;
+    margin: auto;
+    height: 50px;
+
+}
+.row .left{
+    float: left;
+    width: 20%;
+    height: auto;
+}
+.row .right{
+    float: left;
+    width: 80%;
+    height: auto;
+}
+.left label{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: 1.2rem;
+}
+.right input[type = text], [type = date] {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input[type = submit]{
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 20%;
+}
+span{
+    padding-left: 10px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    /* display: none; */
+    margin-top: 30px;
+    
+}
+tr, th, td {
+    border: 1px solid rgb(92, 89, 89);
+    text-align: center;
+    padding: 10px;
+}
+tr:nth-child(even){
+    background-color: rgb(224, 222, 217);
+}
+</style>
+<body>
+    <div class="container">
+      <!-- Nhập liệu và tính toán -->
+      <form action="">
+        <!-- Số tiền vay -->
+        <div class="row">
+          <div class="left">
+            <label for="" > Số tiền vay</label>
+          </div>
+          <div class="right">
+            <input type="text" name="" id="money" placeholder="Số tiền vay..."> <span>VND</span>
+          </div>
+        </div>
+        <!-- Thời gian vay -->
+        <div class="row">
+          <div class="left">
+            <label for="" > Thời gian vay</label>
+          </div>
+          <div class="right">
+            <input type="text" name="" id="time" placeholder="Thời gian vay..."> <span>tháng</span>
+          </div>
+        </div>
+        <!-- Lãi suất -->
+        <div class="row">
+          <div class="left">
+            <label for="" > Lãi suất</label>
+          </div>
+          <div class="right">
+            <input type="text" name="" id="lai" placeholder="Lãi suất..."> <span>%năm</span>
+          </div>
+        </div>
+         <!-- Ngày giải ngân  -->
+        <div class="row">
+          <div class="left">
+            <label for="" > Ngày giải ngân</label>
+          </div>
+          <div class="right">
+            <input type="date" name="" id="giaingan" placeholder="mm/dd/yyyy"> 
+          </div>
+        </div> 
+      </form>
+      
+      <div class="row">
+        <input type="submit" value="Tính" id="" onclick="final()">
+       </div> 
+        <!-- bảng kết quả  -->
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2" >Kỳ trả nợ</th>
+              <th >Số gốc còn lại</th>
+              <th >Gốc</th>
+              <th>Lãi</th>
+              <th>Tổng gốc + Lãi</th>
+            </tr>
+          </thead>
+
+          <tbody id="body">
+            <tr>
+              <!-- hiển thị kết quả -->
+          </tr> 
+          </tbody>
+          
+
+
+        </table>
+        
+      </div>
+</body>
+<script>
+    var tienVay = document.getElementById('money');
+var time = document.getElementById('time');
+var giaingan = document.getElementById('giaingan');
+var lai = document.getElementById('lai');
+
+var body = document.getElementById('body');
+
+function final() {
+    var tienGoc = tienVay.value.toLocaleString();
+    var thoiGianVay = time.value;
+    var ngayGiaiNgan = new Date(giaingan.value);
+    var laiSuat = lai.value;
+
+   
+    result(tienGoc, laiSuat, thoiGianVay, ngayGiaiNgan)
+}
+
+//Tính tiền gốc hàng tháng
+function calculateTienGoc(tienGoc, time) {
+    let tienGocHangThang = tienGoc/time;
+    return tienGocHangThang;
+}
+
+// Tính tiền lãi hàng tháng
+function calculateTienLai(gocConLai, lai) {
+    let tienLaiHangThang = gocConLai*(lai/100)/12;
+    return tienLaiHangThang;
+}
+
+// Tính toán
+function result(tienGoc, laiSuat, time, ngayGiaiNgan) {
+    var tienGocConLai = tienGoc;
+    var gocHangThang = calculateTienGoc(tienGoc, time);
+    var tongTienPhaiTra = 0;
+    var tongTienLai = 0;
+    taoBang(ngayGiaiNgan, 0, tienGocConLai)
+    for(let i = 1; i <= time; i++){
+        var laiHangThang = calculateTienLai(tienGocConLai, laiSuat)
+        var tienPhaiTraHangThang = laiHangThang + gocHangThang;
+        tienGocConLai = tienGocConLai - gocHangThang;
+
+        
+        ngayGiaiNgan.setMonth(ngayGiaiNgan.getMonth() + 1)
+        updateDate(ngayGiaiNgan)
+        taoBang(ngayGiaiNgan, i, tienGocConLai, gocHangThang, laiHangThang, tienPhaiTraHangThang )
+        tongTienPhaiTra += gocHangThang
+        tongTienLai += laiHangThang
+
+    }
+
+    taoHangTongKq(tongTienPhaiTra, tongTienLai, tongTienPhaiTra + tongTienLai)
+}
+
+// hiển thị kết quả
+function taoBang(ngayGiaiNgan, index, gocConLai, gocHangThang, laiHangThang, tienPhaiTraHangThang) {
+    var hang = body.insertRow(-1);
+    var cot1 = hang.insertCell(0);
+    var cot2 = hang.insertCell(1);
+    var cot3 = hang.insertCell(2);
+    var cot4 = hang.insertCell(3);
+    var cot5 = hang.insertCell(4);
+    var cot6 = hang.insertCell(5);
+
+    if(index == 0) {
+        cot1.innerText = updateDate(ngayGiaiNgan);
+        cot2.innerText = index;
+        cot3.innerText = updateNumber(gocConLai);
+        cot4.innerText = '';
+        cot5.innerText = '';
+        cot6.innerText = '';
+    } else {
+        cot1.innerText = ngayGiaiNgan;
+        cot2.innerText = index;
+        cot3.innerText = updateNumber(gocConLai);
+        cot4.innerText = updateNumber(gocHangThang);
+        cot5.innerText = updateNumber(laiHangThang);
+        cot6.innerText = updateNumber(tienPhaiTraHangThang);
+    }
+}
+
+// Tạo hàng cuối tính tổng
+function taoHangTongKq(tongGoc, tongLai, tongTienPhaiTra) {
+    var hang = body.insertRow(-1);
+    var cot1 = hang.insertCell(0);
+    var cot2 = hang.insertCell(1);
+    var cot3 = hang.insertCell(2);
+    var cot4 = hang.insertCell(3);
+    var cot5 = hang.insertCell(4);
+    var cot6 = hang.insertCell(5);
+
+    cot1.innerHTML = `<b> Tổng </b>`;
+    cot2.innerHTML = '';
+    cot3.innerHTML = '';
+    cot4.innerHTML = `<b> ${updateNumber(tongGoc)} </b>`;
+    cot5.innerHTML = `<b> ${updateNumber(tongLai)} </b>`;
+    cot6.innerHTML = `<b> ${updateNumber(tongTienPhaiTra)} </b>`;
+}
+
+// Update lại ngày
+function updateDate(date) {
+    var date = new Date()
+    return date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
+}
+
+// Update lại số
+function updateNumber(number) {
+   return Math.round(number).toLocaleString();
+}
+</script>
+</html>

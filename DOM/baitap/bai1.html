@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <form id="form">
+        <h1>BMI Calculator</h1>
+        <div>
+            <label for="height">Height (in cm)</label>
+            <input type="text" id="height" placeholder="Your height" name="height">
+        </div>
+        <div>
+            <label for="weight">Weight (in kg)</label>
+            <input type="text" id="weight" placeholder="Your weight" name="weight">
+        </div>
+        <div>
+            <p>Gender</p>
+            <input type="radio" value="male" id="male" name="gender"> <label class="" for="male">Nam</label>
+            <input type="radio" value="female" id="female" name="gender"> <label class="" for="female">Nữ</label>
+        </div>
+        <div>
+            <button type="submit">Calculate</button>
+        </div>
+        <div id="result"></div>
+
+    </form>
+</body>
+<script>
+
+    const form = document.querySelector("#form");
+
+    form.addEventListener("submit", function(event){
+        event.preventDefault();
+        console.log({form});
+
+        const heightInput = form.elements["height"];
+        const weightInput = form.elements["weight"];
+        const genderInput = form.elements["gender"];
+
+        const height = heightInput.value;
+        const weight = weightInput.value;
+        const gender = genderInput.value;
+        
+        if(!height || !weight || !gender){
+            return alert("hay nhap du");
+        }
+
+
+        let bmi = Number(weight) / (Number(height) * Number(height));
+        let result = "";
+
+        if(gender === 'male'){
+            switch(bmi){
+                case bmi < 20,7:
+                    result = 'gây'
+                    break;
+                case bmi < 26,4:
+                    result = 'binh thuong'
+                    break;
+                case bmi < 27,8:
+                    result = 'thua cân nhẹ'
+                    break;
+                case bmi < 31,1:
+                    result = 'lý tưởng'
+                    break;
+                default:
+                    result = "béo phì";
+                    break;
+            }
+        }else{
+            switch(true){
+                case bmi < 19,1:
+                    result = 'gây'
+                    break;
+                case bmi < 25,8:
+                    result = 'binh thuong'
+                    break;
+                case bmi < 27,3:
+                    result = 'thua cân nhẹ'
+                    break;
+                case bmi < 32,2:
+                    result = 'lý tưởng'
+                    break;
+                default:
+                    result = "béo phì";
+                    break;
+            }
+        }
+    });
+
+    var height1 = document.querySelector("#height");
+    var weight1 = document.querySelector("#weight");
+    var gender1 = document.querySelector("#male");
+    var gender2 = document.querySelector("#female");
+    var cal = document.querySelector("#cal");
+
+    function calculate(height, weight) {
+        if(height <= 0 || weight <= 0) {
+            alert('No Calculate');
+        }
+        height = height/100;
+        let bmi = weight/Math.pow(height,2);
+        return bmi;
+    }
+
+    cal.onclick = function result() {
+        var height = height1.value;
+        var weight = weight1.value;
+        var bmi = calculate(height, weight);
+
+        if(bmi < 18.5){
+            alert('Bạn bị gầy, nguy cơ phát triển bệnh thấp');
+        } else if(bmi >= 18.5 && bmi <= 24.9){
+            alert('Bạn bình thường, nguy cơ phát triển bệnh trung bình');
+        } else if(bmi >= 25 && bmi <= 29.9){
+            alert('Bạn hơi béo, nguy cơ phát triển bệnh cao');
+        } else if(bmi >= 30 && bmi <= 34.9){
+            alert('Bạn béo phì cấp độ 1, nguy cơ phát triển bệnh cao');
+        } else if(bmi >= 35 && bmi <= 39.9){
+            alert('Bạn béo phì cấp độ 2, nguy cơ phát triển bệnh rất cao');
+        } else if(bmi > 40){
+            alert('Bạn béo phì cấp độ 3, nguy cơ phát triển bệnh nguy hiểm');
+        }
+    }
+</script>
+</html>

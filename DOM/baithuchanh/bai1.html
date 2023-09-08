@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo list</h1>
+    <input id="input" type="text">
+    <button id="add">Add</button>
+    <ul id="container">
+    <!-- <li>Buy groceries</li>
+    <li>Feed the cat</li>
+    <li>Do laundry</li>
+lấy đc -->
+    </ul>
+</body>
+
+<script>
+    const container = document.querySelector("#container");
+
+    const addBtn = document.querySelector("#add");
+    const input = document.querySelector("#input");
+
+    const todos = [];
+
+    addBtn.addEventListener("click", function(){
+        //lấy gúa trị ô input
+        const value = input.value;
+        if(!value) return;
+
+        //thêm giá trị đó lên UI
+        todos.push(value);
+
+        render();
+        input.value = null;
+    })
+
+    //cập nhật lại UI
+    function render(){
+        const liElement = todos.map(todo => {
+        return `<li>${todo}</li>`;
+    });
+    container.innerHTML = liElement.join("");
+    }
+    render();
+
+</script>
+</html>

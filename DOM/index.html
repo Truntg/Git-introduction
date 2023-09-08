@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementById example</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script>
+    // function changeColor(newColor){
+    //     const elem = document.getElementById('para');
+    //     elem.style.color = newColor;
+    // }
+
+
+    //b1: lấy phần tử muốn tương tác
+    // const container = document.querySelector("#container");
+    // console.log(container);
+
+    // //tạo ra 1 phân tử 
+    // const pTag = document.createElement("p");
+
+    // pTag.innerText = "Welcome to..";
+
+    // container.appendChild(pTag);
+
+    // const showBtn = document.querySelector("#container button");
+
+    // showBtn.addEventListener('click', function(event){
+    //     console.log('event',event);
+    //     event.target.innerText = "ccc";
+    //     event.target.stype.color = "red";
+    // });
+    // console.log(showBtn);
+
+    $(document).ready(function(){
+        $("#container button").click()
+    })
+
+</script>
+<body>
+    <!-- <p id="para">Some text here</p>
+    <button onclick="changeColor('blue');">blue</button>
+    <button onclick="changeColor('red');">red</button> -->
+
+    <div id="container">
+        <button>Show</button>
+    </div>
+</body>
+</html>

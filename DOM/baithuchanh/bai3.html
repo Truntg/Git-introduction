@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="keyboard" placeholder="enter..." type="password">
+    <button id="show">Send</button><br/>
+</body>
+<script>
+    const input = document.querySelector("#keyboard");
+    const showBtn = document.querySelector("#show")
+
+
+    showBtn.addEventListener("click", function(){
+        input.type = "text";
+
+    });
+
+    input.addEventListener("keydown", function(event){
+        const value = event.target.value;
+        console.log(value);
+    });
+
+    input.addEventListener("foucs", function(event){
+        input.stype.back = "yellow";
+    });
+
+    input.addEventListener("blur", function(event){
+        input.stype.background = "";
+    });
+
+    input.addEventListener("place", function(event){
+       input.placeholder = "abc";
+    });
+
+</script>
+</html>

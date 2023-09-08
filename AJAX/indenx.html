@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //     // Typical action to be performed when the document is ready:
+    //     // document.getElementById("demo").innerHTML = xhttp.responseText;
+    //     //json đổi sang mảng
+    //     const response = xhttp.response;
+    //     console.log("response", JSON.parse(response));
+    //     }
+    // };
+    // xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos", true);
+    // xhttp.send();
+
+    // fetch("https://jsonplaceholder.typicode.com/todos", {methodL: "GET"}).then(
+    //     function(response){
+    //         response.json().then(function(res){
+    //             console.log(res);
+    //         });
+    //     });
+    axios
+    .get("https://jsonplaceholder.typicode.com/todos/200")
+    .then(function(response){
+        console.log(response.data);
+    });
+</script>
+</html>
