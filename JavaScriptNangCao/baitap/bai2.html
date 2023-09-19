@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class ToDo{
+        constructor(date){
+            this.date = date;
+            this.works = [];
+        }
+        addWork(work){
+            this.works.push({...work});
+        }
+    }
+
+    class ToDoList extends ToDo{
+        constructor(){
+            super(date); // gọi lại hàm khởi tạo của super() để truyền vào các tham
+            this.todos = [];
+        }
+        addTodo(todo) {
+            // Kiểm tra xem đã tồn tại một ToDo có cùng ngày chưa
+            const existingTodo = this.todos.find((t) => t.date === todo.date);
+
+            if (!existingTodo) {
+            this.todos.push(todo);
+            } else {
+            // Nếu đã tồn tại ToDo có cùng ngày, thì thêm công việc vào ToDo đó
+            existingTodo.addWork(todo.works[0]);
+            }
+        }
+    }
+
+    const todoList = new ToDoList();
+
+    const todo1 = new ToDo("2023-09-13");
+    todo1.addWork("Làm việc A");
+    todo1.addWork("Làm việc B");
+
+    const todo2 = new ToDo("2023-09-14");
+    todo2.addWork("Làm việc C");
+
+    todoList.addTodo(todo1);
+    todoList.addTodo(todo2);
+
+    console.log("Danh sách công việc dài hạn:");
+    console.log(todoList.todos);
+
+</script>
+</html>

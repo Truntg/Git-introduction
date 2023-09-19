@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //greet:function là phương thức
+    // console.log(myVar);
+    // let myVar = 10;
+    
+
+   class Animals{
+    constructor(name, specie){
+        this.name = name ;
+        this.specie = specie;
+    }
+    sing(){
+        return `${this.name} can sing`;
+    }
+   }
+
+   class Cats extends Animals{
+    constructor(name, age, whiskerColor){
+        super(name, age);
+        this.whiskerColor = whiskerColor;
+    }
+    whiskerColor(){
+        return `i have ${this.whiskerColor} whiskers`;
+    }
+   }
+   
+   let bingo = new Cats("bingo", "hary", "brown");
+   console.log(bingo);
+</script>
+</html>

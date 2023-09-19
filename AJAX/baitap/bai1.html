@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Todo list</h3>
+    <ul id="pokemon-list"></ul>
+    <div id="pokemon-info"></div>
+  </body>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+    const pokemonList = document.getElementById('pokemon-list');
+
+    function displayPokemonList(data) {
+    data.results.forEach(pokemon => {
+        const listItem = document.createElement('li');
+        listItem.textContent = pokemon.name;
+        listItem.addEventListener('click', () => displayPokemonInfo(pokemon.url));
+        pokemonList.appendChild(listItem);
+    });
+    }
+
+
+    fetch('https://pokeapi.co/api/v2/pokemon')
+        .then(response => response.json())
+        .then(data => {
+            // Xử lý dữ liệu ở đây và hiển thị lên trang web
+        })
+        .catch(error => console.error('Lỗi khi tải dữ liệu từ API: ', error));
+
+
+    function displayPokemonInfo(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+        // Hiển thị thông tin Pokémon, bao gồm ảnh và loại
+        const pokemonInfo = document.getElementById('pokemon-info');
+        pokemonInfo.innerHTML = `
+            <img src="${data.sprites.front_default}" alt="${data.name}" />
+            <div class="info">
+            <h2>${data.name}</h2>
+            <p>Type: ${data.types.map(type => type.type.name).join(', ')}</p>
+            </div>
+        `;
+        })
+        .catch(error => console.error('Lỗi khi tải thông tin Pokémon: ', error));
+    }
+
+
+    // function fetchData() {
+    //   axios
+    //     .get(`https://pokeapi.co/api/v2/pokemon`, {
+    //       params: {
+    //         _page: page,
+    //         _limit: limit,
+    //       },
+    //     })
+    //     .then(function (response) {
+    //       todos = response.data;
+    //       render();
+    //     });
+    // }
+
+    // function render() {
+    //   const container = document.querySelector("#container");
+    //   const todoElement = todos.map((item) => 
+    //   `<li>${item.name}</li>,
+    //    <li>${item. types}</li>
+    //    <li>${item.sprites}</li>`
+    //   );
+
+    //   container.innerHTML = todoElement.join("");
+    // }
+
+    // fetchData();
+  </script>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "baithuchanh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bai1.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node bai1.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.0"
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // console.log('1');
+
+    // const age = 20
+
+    // setTimeout(() =>{
+    //     console.log("2");
+    // },5000);
+
+    // setTimeout(() => {
+    //     console.log("3");
+    // }, 0);
+
+    // console.log("4");
+
+    let happyHanding = async(message) =>{
+         new Promise((resolve, reject)=> {
+            setTimeout( () => {
+                if(message === 'Yes'){
+                    return'Em đồng ý'
+                }else{
+                    return'k đồng ý'
+                }
+            },5000)
+        })
+    }
+
+    happyHanding('Yes').then(result =>{
+        console.log(result);
+    })
+
+
+    async function happyHanding1(mess){
+        setTimeout(() => {
+            if(mess === 'Yes') return "đồng ý";
+
+            return "k đồng ý"
+        }, 2000);
+
+        const answer = await new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                if(mess === 'Yes') return "đồng ý";
+
+                return "k đồng ý"
+            }, 2000);
+        });
+        return answer;
+    }
+    happyHanding1("yes").catch((error) => console.log(error));
+    
+</script>
+</html>

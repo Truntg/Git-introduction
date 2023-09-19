@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //xay dựng class product
+
+    class Product{
+        constructor(name, price, amount){
+            this.name = name;
+            this.price = price;
+            this.amount = amount;
+        }
+        addProduct(quantity){
+            this.amount = this.amount + quantity;
+            console.log("add product ");
+        }
+    }
+
+    // xây dựng class Customer
+    class Customer{
+        constructor (name , quantityOfProducts) {
+            this.name  = name ;
+            this.quantityOfProducts = quantityOfProducts;
+        }
+        buyProduct(product, quantity){
+            if(quantity > product.amount) return console.log("this product is out of stock");
+
+            product.amount = product.amount - quantity;
+            this.quantityOfProducts = this.quantityOfProducts + quantity;
+            console.log("buy product");
+        }
+    }
+
+    const shirt = new Product('polo', 150000, 10);
+    console.log(shirt);
+
+    shirt.addProduct(5);
+    console.log(shirt);
+
+    const customer = new Customer('trung', 20);
+    customer.buyProduct(shirt, 5);
+    customer.buyProduct(shirt,5);
+
+    console.log(customer,shirt);
+
+
+</script>
+</html>

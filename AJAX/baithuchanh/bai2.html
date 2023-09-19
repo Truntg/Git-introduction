@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h3>TODO LIST</h3>
+    <form id="form">
+        <input name="title" placeholder="add new">
+        <button type="submit">ADD</button>
+    </form>
+    <ul id="container">
+    </ul>
+</body>
+<script>
+    let todos = [];
+    let page = 1;
+    let limit = 100;
+
+    const form = document.querySelector('#form');
+
+    form.addEventListener("submit", function(event){
+        event.preventDefault();
+
+        const titleInput = form.elements["title"];
+        const title = titleInput.value;
+
+        if(!title) return;
+        axios.post('https://jsonplaceholder.typicode.com/todos', {
+            userId: 1,
+            title: title,
+            complement: false,
+        }).then(function(response){
+            console.log(response);
+            if(response.status === 201){
+                fetchData();
+            }
+        });
+    });
+
+
+    function fetchData(){
+        axios
+        .get("https://jsonplaceholder.typicode.com/todos", {params : {_page:page, _limit: limit,},})
+        .then(function(response){
+            console.log(response.data);
+            todos = response.data;
+            render();
+        });
+    }
+
+    function render(){
+        const container = document.querySelector('#container')
+        const todoElement = todos.map((item) => `<li>${item.title}</li>`);
+
+        container.innerHTML = todoElement.join("");
+    }
+    
+</script>
+</html>

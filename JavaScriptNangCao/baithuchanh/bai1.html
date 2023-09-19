@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //1. string
+    let str1 = 'My name is:'  
+    let name = 'Dylan';
+
+    let str2 = `${str1} ${name}`
+
+    //Destructuring objects
+    let information = { firstName: 'Dylan', lastName: 'Israel'};
+
+    let { firstName, lastName } = information;
+    console.log(firstName);
+    console.log(lastName);
+
+    //
+    let [ firstName1 ] = ['Trung', 'Nguyễn'];
+    console.log(firstName1);
+
+    //Object Literal
+    let name1 = 'Trang';
+    let information1 = {name1};
+
+    //for .. of
+    let str = 'hello';
+
+    for (let char of str) {  console.log(char);}
+
+    //Spread syntax
+
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6];
+    let arr3 = [...arr1, ...arr2];
+
+    function findLength(... args){ console.log(args.length);}
+
+    //arrow
+    const square = num => num * num;
+    square(2); 
+    
+    //includes
+    let str3 = 'hello world';
+    console.log(str3.includes('hello'));
+
+
+    //Promise, async và await
+    function takeLongTimeAsync() {
+    return new Promise(resolve => {
+        setTimeout(() => resolve("long_time_value"), 1000);
+    });
+    }
+
+    async function test() {
+        const v = await takeLongTimeAsync();
+        console.log(v);
+    }
+
+    test();
+</script>
+</html>
