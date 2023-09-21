@@ -10,31 +10,49 @@
 </body>
 <script>
     class ToDo{
-        constructor(date){
+        constructor(date,works){
             this.date = date;
-            this.works = [];
+            this.works = works;
         }
         addWork(work){
-            this.works.push({...work});
+            this.works.push({work});
         }
     }
 
-    class ToDoList extends ToDo{
-        constructor(){
-            super(date); // gọi lại hàm khởi tạo của super() để truyền vào các tham
-            this.todos = [];
+    class ToDoList{
+        constructor(todos){
+            // super(date); // gọi lại hàm khởi tạo của super() để truyền vào các tham
+            this.todos = todos;
         }
         addTodo(todo) {
             // Kiểm tra xem đã tồn tại một ToDo có cùng ngày chưa
-            const existingTodo = this.todos.find((t) => t.date === todo.date);
+            // const existingTodo = this.todos.find((t) => t.date === todo.date);
 
-            if (!existingTodo) {
-            this.todos.push(todo);
-            } else {
-            // Nếu đã tồn tại ToDo có cùng ngày, thì thêm công việc vào ToDo đó
-            existingTodo.addWork(todo.works[0]);
+            // if (!existingTodo) {
+            // this.todos.push(todo);
+            // } else {
+            // // Nếu đã tồn tại ToDo có cùng ngày, thì thêm công việc vào ToDo đó
+            // existingTodo.addWork(todo.works[0]);
+            // }
+            //every dùng để đẩy ra kết quả khi k có kết quả nào trùng và thỏa mãn đk khác trong mảng
+            //tome đẩy ra kết quả khi thỏa mãn 1 đk trong mảng
+
+            const{date} = todo;
+
+            const isValidTodo = this.checkTodoDate(date)
+
+            if(isValidTodo){
+                this.todos.push(todo);
+            }else{
+                console.log("invalid date");
             }
+            
         }
+        checkTodoDate(date){
+            let isValid = this.todos.every((todo) => todo.date !== date);
+            return isValid;
+        }
+
     }
 
     const todoList = new ToDoList();
