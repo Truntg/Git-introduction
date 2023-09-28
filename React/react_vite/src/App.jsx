@@ -29,7 +29,8 @@ function App() {
 
   return (
     <div>
-      <Header isLogined={isLogin} onLogin ={onLoginClick} onLogout={onLogoutClick}/>
+      <Header isLogined={isLogin}//đây là câu lệnh về props
+       onLogin ={onLoginClick} onLogout={onLogoutClick}/>
       <Content/>
     </div>
   );
