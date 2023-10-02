@@ -6,45 +6,51 @@
     <title>Document</title>
 </head>
 <style>
-    *{
+    /* *{
         box-sizing: border-box;
     }
     #head,#head-link,#main,#footer {
         border: 1px solid black;
         margin-bottom: 4px;
-    }
+    } */
     #left, #center, #right{
         border: 1px solid black;
     }
     #main{
-        height: 300px;
+        /* height: 300px; */
+        width: 100%;
     }
     #left{
-        width: 100px;
-        float: left;
-        height: 100%;
+        width: 30%;
+        height: 30%;
+        background-color: blue;
+        /* float: left;
+        height: 100%; */
         
     }
     #center{
-        float: left;
+        width: 70%;
+        height: 70%;
+        background-color: red;
+        /* float: left;
         width: calc(100% - 200px);
-        height: 100%;
+        height: 100%; */
     }
-    #right{
+    /* #right{
         width: 100px;
         float: right;
         height: 100%;
         
-    }
+    } */
 </style>
 <body>
-    <div id="head">Header</div>
-    <div id="head-link">Head Link</div>
+    <!-- <div id="head">Header</div>
+    <div id="head-link">Head Link</div> -->
     <div id="main">
         <div id="left">Left</div>
         <div id="center">Center</div>
-        <div id="right">Right</div>
+        <!-- <div id="right">Right</div> -->
     </div>
-    <div id="footer">Footer</div>
+    <!-- <div id="footer">Footer</div> -->
 </body>
 </html>

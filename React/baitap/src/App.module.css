@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+}
+.sidebar{
+    flex: 1;
+    background-color: blue;
+    padding: 20px;
+}
+.content{
+    flex: 3;
+    background-color: red;
+    padding: 20px;
+}
