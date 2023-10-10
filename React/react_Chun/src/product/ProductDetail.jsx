@@ -1,20 +1,22 @@
-import { useNavigate, useParams } from 'react-router-dom'
+/* eslint-disable react/jsx-no-undef */
+import { useNavigate } from 'react-router-dom'
 
 const ProductDetail = () => {
+  
+  const naviagte = useNavigate();
 
-    function isUserAuthorized() {
-        // Thực hiện kiểm tra quyền truy cập của người dùng và trả về true nếu họ có quyền, ngược lại trả về false.
-      }
-      
-    const {id} = useParams();
-    const navita = useNavigate();
-    
-    if (!isUserAuthorized()) {
-        navita('/unauthorized');
-        return null;
-      }
+  const isLogin = localStorage.getItem("isLogin") === 'true';
+
+  console.log(isLogin);
+  if (!isLogin) return<Navigate to="/login"/>;
+  const onLogin = () => {
+    localStorage.setItem("isLogin", true);
+    naviagte("/");
+  }
   return (
-    <div>ProductDetail : {id}</div>
+    <div>
+      <button onClick={onLogin}></button>
+    </div>
   )
 }
 
