@@ -60,7 +60,8 @@ const PostDetail = () => {
           name="file"
           control={control}
           
-          render={({ field }) => <input type="file" {...field} />}
+          render={({ field }) => <input type="file" {...field}
+ />}
         />
         {errors.file && <p>{errors.file.message}</p>}
       </div>
