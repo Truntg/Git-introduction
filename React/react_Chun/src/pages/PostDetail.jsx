@@ -18,7 +18,7 @@ const PostDetail = () => {
     recipient: yup.string().required('Vui lòng nhập người nhận'),
     subject: yup.string().required('Vui lòng nhập chủ đề'),
     content: yup.string().required('Vui lòng nhập nội dung'),
-    file: yup.mixed().required('Vui lòng tải lên tệp tin'),
+    file: yup.object().test('Vui lòng tải lên tệp tin') ,
   });
 
   const onSubmit = (data) => {
@@ -59,6 +59,7 @@ const PostDetail = () => {
         <Controller
           name="file"
           control={control}
+          
           render={({ field }) => <input type="file" {...field} />}
         />
         {errors.file && <p>{errors.file.message}</p>}

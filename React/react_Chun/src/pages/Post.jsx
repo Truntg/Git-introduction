@@ -8,7 +8,7 @@ import * as yup from 'yup';
 const schem = yup.object().shape({
   name: yup.string().required("name k đc để trống"),
   address: yup.string().required("hãy điền địa chỉ"),
-  phone: yup.string().required("nhập số đt"),
+  phone: yup.number().required("nhập số đt").integer("phone number is invalid"),
   email: yup.string().email("email k hợp lệ").required("vui lòng nhập email"),
 });
 const Post = () => {
@@ -22,7 +22,7 @@ const Post = () => {
       defaultValues: {
         name: "",
         address: "",
-        phone: "",
+        phone: 0,
         email: "",
       },
       resolver: yupResolver(schem),
